@@ -69,11 +69,14 @@ async function createNewMovie(movie){
     return newMovie
 }
 
-async function createNewMoviesCollection(moviesCollection){
-    moviesCollection.forEach(async movie => {
-        await createNewMovie(movie)
+function createNewMoviesCollection(moviesCollection){
+    return moviesCollection.map(createNewMovie)
+}
+
+async function createNewMoviesCollectionBis(moviesCollection){
+    await moviesCollection.forEach( async movie => {
+         createNewMovie(movie)
     })
-    return
 }
 
 async function createNewShowtime(showtime){
@@ -122,9 +125,13 @@ async function buildDatabase(){
         'company' : "Gaumont Pathe",
         'capacity' : "1000"
     })
-    await createNewMoviesCollection(moviesCollection)
+    await Promise.all(createNewMoviesCollection(moviesCollection))
+    //await createNewMoviesCollectionBis(moviesCollection)
     addShowtime ("The Batman", "Pathe So Ouest" , "3", "16", "45")
+
 }
 
 buildDatabase()
+
+
 
