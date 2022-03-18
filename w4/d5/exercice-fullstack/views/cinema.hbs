@@ -1,0 +1,11 @@
+<h1>Cinemas : {{cinema.name}}</h1>
+<p>{{cinema.name}} is located in {{cinema.address.city}} with postal code {{cinema.address.postal_code}}</p>
+<form action="/cinema/{{cinema._id}}" method="post" class="form-example">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="{{cinema.name}}"  required>
+    <label for="city">City: </label>
+    <input type="text" name="city" id="city" value="{{cinema.address.city}}" required>
+    <label for="postalCode">Postal code: </label>
+    <input type="postalCode" name="postal_code" id="postalCode" value="{{cinema.address.postal_code}}" required>
+    <input type="submit" value="Update cinema">
+</form>

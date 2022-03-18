@@ -1,0 +1,17 @@
+<h1>Cinemas</h1>
+{{#each cinemas}}
+    <li>
+        <a href="/cinema/{{this._id}}">
+            {{this.name}}
+        </a>
+    </li>
+{{/each}}
+<form action="/cinemas" method="post" class="form-example">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required>
+    <label for="city">City: </label>
+    <input type="text" name="city" id="city" required>
+    <label for="postalCode">Postal code: </label>
+    <input type="postalCode" name="postal_code" id="postalCode" required>
+    <input type="submit" value="Add new cinema">
+</form>
